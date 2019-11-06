@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             interest.text = String.format("%.2f",_interest)
             monthlyRepayment.text = String.format("%.2f",monthlyrepayment)
         } catch (nfe: NumberFormatException) {
-            carLoan.text = "hahaha"
+            // not number
         }
     }
 
