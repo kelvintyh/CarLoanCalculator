@@ -16,22 +16,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        findViewById<Button>(R.id.calculate_button).setOnClickListener{
-            calculate(it)
-        }
+        findViewById<Button>(R.id.buttonCalculate).setOnClickListener{ calculate()}
     }
 
-    private fun calculate(view: View){
-        val carPrice = findViewById<EditText>(R.id.car_price_editText).text.toString().toDouble()
-        val downPaymentAmount = findViewById<EditText>(R.id.down_payment_amount_editText).text.toString().toDouble()
-        val loanPeriod = findViewById<EditText>(R.id.loan_period_editText).text.toString().toDouble()
-        val interestRate = findViewById<EditText>(R.id.interest_rate_editText).text.toString().toDouble()
-        val carLoan = findViewById<TextView>(R.id.car_loan_view)
-        val interest = findViewById<TextView>(R.id.interest_view)
-        val monthlyRepayment = findViewById<TextView>(R.id.monthly_repayment_view)
+    private fun calculate(){
+        val carPrice = findViewById<EditText>(R.id.editTextCarPrice).text.toString().toDouble()
+        val downPaymentAmount = findViewById<EditText>(R.id.editTextDownPayment).text.toString().toDouble()
+        val loanPeriod = findViewById<EditText>(R.id.editTextLoanPeriod).text.toString().toDouble()
+        val interestRate = findViewById<EditText>(R.id.editTextInterestRate).text.toString().toDouble()
+        val carLoan = findViewById<TextView>(R.id.textViewLoan)
+        val interest = findViewById<TextView>(R.id.textViewInterest)
+        val monthlyRepayment = findViewById<TextView>(R.id.textViewMonthlyRepayment)
         try {
             val carloan = carPrice - downPaymentAmount
-            val _interest = carloan * interestRate* loanPeriod
+            val _interest = carloan * (interestRate/100)* loanPeriod
             val monthlyrepayment = (carloan + _interest)/ loanPeriod/ 12
             carLoan.text = String.format("%.2f",carloan)
             interest.text = String.format("%.2f",_interest)
