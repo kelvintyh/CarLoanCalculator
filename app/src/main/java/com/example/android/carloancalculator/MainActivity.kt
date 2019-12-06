@@ -17,6 +17,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<Button>(R.id.buttonCalculate).setOnClickListener{ calculate()}
+        findViewById<Button>(R.id.buttonReset).setOnClickListener{ reset()}
+
     }
 
     private fun calculate(){
@@ -37,6 +39,16 @@ class MainActivity : AppCompatActivity() {
         } catch (nfe: NumberFormatException) {
             // not number
         }
+    }
+
+    private fun reset(){
+        findViewById<EditText>(R.id.editTextCarPrice).text = null;
+        findViewById<EditText>(R.id.editTextDownPayment).text = null;
+        findViewById<EditText>(R.id.editTextLoanPeriod).text = null;
+        findViewById<EditText>(R.id.editTextInterestRate).text = null;
+        findViewById<TextView>(R.id.textViewLoan).text = null;
+        findViewById<TextView>(R.id.textViewInterest).text = null;
+        findViewById<TextView>(R.id.textViewMonthlyRepayment).text = null;
     }
 
 
